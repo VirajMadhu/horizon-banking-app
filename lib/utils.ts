@@ -193,3 +193,7 @@ export const getTransactionStatus = (date: Date) => {
 
   return date > twoDaysAgo ? "Processing" : "Success";
 };
+
+export function generateDots(count: number) {
+  return Array(count).fill('●').join('');
+}
