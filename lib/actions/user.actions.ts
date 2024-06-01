@@ -18,7 +18,7 @@ export const signIn = async ({ email, password }: signInProps) => {
         const response = await account.createEmailPasswordSession(email, password);
         return parseStringify(response);
     } catch (error) {
-        console.error(error)
+        console.error("signIn", error)
     }
 }
 
@@ -45,7 +45,7 @@ export const signUp = async (userData: SignUpParams) => {
         //we cannot directly pass large objects through nextjs actions. so stringfy it
         return parseStringify(newUserAccount);
     } catch (error) {
-        console.error(error)
+        console.error("signUp", error)
     }
 }
 
@@ -53,9 +53,9 @@ export const getLoggedInUser = async () => {
     try {
         const { account } = await createSessionClient();
         const user = await account.get();
-
         return parseStringify(user)
     } catch (error) {
+        console.error("getLoggedInUser", error)
         return null;
     }
 }
@@ -66,6 +66,7 @@ export const loggoutAccount = async () => {
         cookies().delete("appwrite-session");
         await account.deleteSession('current');
     } catch (error) {
+        console.error("loggoutAccount", error)
         return null
     }
 }

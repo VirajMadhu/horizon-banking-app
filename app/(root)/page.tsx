@@ -6,6 +6,7 @@ import React from 'react'
 
 const Home = async () => {
 
+  // const loggedIn = { firstName: 'Viraj', lastName: 'Madhushan', name: 'Name', email: 'email' }
   const loggedIn = await getLoggedInUser();
 
   return (
